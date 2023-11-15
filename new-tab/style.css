@@ -1,0 +1,81 @@
+* {
+  font-family: "Noto sans", sans-serif;
+  box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/css2?family=Lemonada:wght@600&family=Orbitron&display=swap');
+body {
+  padding: 8px;
+  background: #212121;
+  color: #9b5050;
+}
+.top-left {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  padding: 20px;
+}
+
+.dropdown {
+  position: fixed;
+  top: 10px;
+  right: 0px;
+}
+
+#menu {
+  margin: 5px;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #00000000;
+  padding: 5px ;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  right: 0px;
+}
+.show {
+  display: grid;
+}
+.name {
+  font-family: 'Lemonada', cursive;
+  font-size: 25px;
+}
+
+.center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.time {
+  font-size: 60px;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 5px;
+}
+
+.battery {
+  font-size: 18px;
+}
+
+svg {
+  fill: #9b5050;
+  margin: 1px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 250ms;
+}
+
+svg:hover {
+  transform: scale(1.2);
+}
+
+#move {
+  cursor: move;
+}
