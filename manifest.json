@@ -1,13 +1,19 @@
 {
-  "manifest_version": 3,
-  "version": "2.3",
+  "manifest_version": 2,
+  "version": "1.0.0",
   "name": "Skiovox Modded",
-  "description": "A helper for the Skiovox exploit -- read more at skiovox.com",
+  "description": "Modded Skiovox",
   "icons": {
     "128": "icon.png"
   },
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAumR4jfjFFAV2w/Ag56R6CLN2FNVnOO03UyayDHJJOGAXc7MIzElD6opvefPoZi6EHPqH4IvuRZ+u3EaWdv36lUOWMx7ieHjptmvyMF1BTaKbFaH5iyn/8dwnGvKoqWftA+mn1eb7vvzrQWaewP2IuMuHckY9p/whRy0XyW4bAMYP5Uw+oCTMayNzB8LbiczHttVt4f3003bRZ5QljqSl7QNHL6gCUteXKMCMYiXNigSTaShHeXjKWIaKwSoyU/kpKkr1YyCQlbtBGVwQQbuiaA34f7o0ZG6I57hPB+0bMHXIvEGj4kcHZo3C6iVWaV1dS3XCC/q404Kr09lqjloS7wIDAQAB",
   "commands": {
+    "ACCESS_HISTORY": {
+      "description": "Ctrl+H"
+    },
+    "ACCESS_DOWNLOADS": {
+      "description": "Ctrl+J"
+    },
     "NEW_TAB": {
       "description": "Ctrl+T"
     },
@@ -61,10 +67,16 @@
     },
     "CTRL_9": {
       "description": "Ctrl+9"
+    },
+    "VIEW_SOURCE": {
+      "description": "Ctrl+U"
+    }, 
+    "FULLSCREEN": {
+      "description": "Alt+F"
     }
   },
   "background": {
-    "service_workers": [
+    "scripts": [
       "/background/commands.js",
       "/background/setup.js",
       "/background/webstore-fix.js"
@@ -73,13 +85,22 @@
   "chrome_url_overrides": {
     "newtab": "/new-tab/main.html"
   },
-  "host_permissions": [
-    "http://*/*", 
-    "https://*/*"
-],
   "permissions": [
     "commands",
     "tabs",
-    "sessions"
+    "sessions",
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*/*"
+      ],
+      "js": [
+        "/content-scripts/window-open-fix.js"
+      ],
+      "all-frames": true,
+      "run-at": "document_start"
+    }
   ]
 }
